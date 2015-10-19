@@ -1,0 +1,24 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    //代表jar包的仓库配置
+    repositories {
+        //指定默认的jar包仓库是 jcenter（一个特定的网站）
+        //jcenter.bintray.com
+        jcenter()
+    }
+
+    dependencies {
+        //代表当前整体工程是一个Android模式的工程
+        classpath 'com.android.tools.build:gradle:1.3.0'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}

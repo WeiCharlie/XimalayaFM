@@ -1,0 +1,28 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.0.1"
+
+    defaultConfig {
+        applicationId "ximalayafm.beiing.com.ximalayafm"
+        minSdkVersion 11
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    //将当前模块中的libs文件夹，内部的 所有的 jar 包作为类库使用
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    //若果使用的是 “groupId:名称：版本号”这种方式 ，代表从Android SDK
+    //或从网络中，自动下载相应的jar包方式，导入类库
+    compile 'com.android.support:appcompat-v7:21.0.3'
+}
