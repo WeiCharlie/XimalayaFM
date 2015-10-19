@@ -1,0 +1,12 @@
+这个文件包含了所有主要类的说明
+
+1. SplashActivity    启动扉页/广告页
+
+2. WelcomeActivity   欢迎页
+
+3. MainActivity      主界面
+
+
+
+
+
