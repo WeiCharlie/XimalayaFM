@@ -6,6 +6,20 @@
 
 3. MainActivity      主界面
 
+4. Constants        包含很多常量
+
+--------------------------------------
+
+主界面四大模块的Fragment定义
+
+1. DiscoverFragment         发现整体Fragment
+
+2. CustomTingFragment       定制听整体Fragment
+
+3. DownloadTingFragment      下载听Fragment
+
+4. PersonalFragment          个人中心（我）
+
 
 
 
