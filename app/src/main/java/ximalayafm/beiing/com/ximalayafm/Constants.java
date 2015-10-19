@@ -1,7 +1,7 @@
 package ximalayafm.beiing.com.ximalayafm;
 
 /**
- * Created by Administrator on 2015/10/19.
+ * Created by Charlie on 2015/10/19.
  */
 
 /**
