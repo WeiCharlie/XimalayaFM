@@ -59,6 +59,7 @@ public final class HttpTools {
                              fis = conn.getInputStream();
                             //  TODO 进行网络输入流的GZIP解压缩
                             String encoding = conn.getHeaderField("Content-Encoding");
+//                            String encoding = conn.getContentEncoding();
 
                             if ("gzip".equals(encoding)){
                                 fis = new GZIPInputStream(fis);

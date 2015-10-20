@@ -1,11 +1,13 @@
 package ximalayafm.beiing.com.ximalayafm;
 
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RadioGroup;
@@ -30,6 +32,8 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        Log.d("Deivce", "Build Model = "+Build.TIME);
 
         // TODO 检查横竖屏切换时，这个数组对象和内部元素是否置空
         fragments = new Fragment[4];

@@ -12,12 +12,18 @@ public class Constants {
     private Constants(){
 
     }
+
+    public static final int TASK_RESULT_OK = 0;
+
+
+
     public static final String SP_NAME = "app";
 
     //版本号
     public static final String  SP_KEY_WELCOME_SHOW_VER = "wsv";
 
-
+    // 异步任务Action定义
+    public static final int TASK_ACTION_DISCOVER_CATEGORIES = 1;
 }
 
 
