@@ -20,6 +20,15 @@
 
 4. PersonalFragment          个人中心（我）
 
+----------------------------------------------------
+
+ 发现部分 DiscoverFragment内部子Fragment的定义
+
+ 1. DiscoverRecommendFragment  发现部分的推荐
+    使用的接口，对应接口文档11
+
+ 2. DiscoverCategoryFragment
+    使用的接口12，获取分类列表
 
 
 

@@ -41,21 +41,21 @@ public class DiscoverFragment extends Fragment implements TabLayout.OnTabSelecte
 
         TabLayout tabLayout= (TabLayout) view.findViewById(R.id.discover_tab_bar);
 
-        //创建tab
-        TabLayout.Tab tab=tabLayout.newTab().setText("推荐 ");
-        tabLayout.addTab(tab);
-
-        tab=tabLayout.newTab().setText("分类 ");
-        tabLayout.addTab(tab);
-
-        tab=tabLayout.newTab().setText("直播 ");
-        tabLayout.addTab(tab);
-
-        tab=tabLayout.newTab().setText("榜单 ");
-        tabLayout.addTab(tab);
-
-        tab=tabLayout.newTab().setText("主播 ");
-        tabLayout.addTab(tab);
+//        //创建tab
+//        TabLayout.Tab tab=tabLayout.newTab().setText("推荐 ");
+//        tabLayout.addTab(tab);
+//
+//        tab=tabLayout.newTab().setText("分类 ");
+//        tabLayout.addTab(tab);
+//
+//        tab=tabLayout.newTab().setText("直播 ");
+//        tabLayout.addTab(tab);
+//
+//        tab=tabLayout.newTab().setText("榜单 ");
+//        tabLayout.addTab(tab);
+//
+//        tab=tabLayout.newTab().setText("主播 ");
+//        tabLayout.addTab(tab);
 
         // 2 View Pager 加载
         pager = (ViewPager) view.findViewById(R.id.discover_viewPager);
@@ -70,12 +70,17 @@ public class DiscoverFragment extends Fragment implements TabLayout.OnTabSelecte
         // 如果在fragment内部使用adapter必须使用getChildFragmentManger
         CommonFragmentPagerAdapter adapter = new CommonFragmentPagerAdapter(getChildFragmentManager(),fragments);
         pager.setAdapter(adapter);
-        // ViewPager滑动与TabLayout绑定
-        pager.addOnPageChangeListener(
-                new TabLayout.TabLayoutOnPageChangeListener(tabLayout));// 支持多个事件同时处理
 
-        // 设置tab的点击Viewpager联动
-        tabLayout.setOnTabSelectedListener(this);
+//        // ViewPager滑动与TabLayout绑定
+//        pager.addOnPageChangeListener(
+//                new TabLayout.TabLayoutOnPageChangeListener(tabLayout));// 支持多个事件同时处理
+//
+//        // 设置tab的点击Viewpager联动
+//        tabLayout.setOnTabSelectedListener(this);
+
+        //  封装了tablayout 与 Viewpager的联动
+        // 需要Viewpager内部指定的adapter必须要重写getpagetitle方法
+        tabLayout.setupWithViewPager(pager);
         return view;
     }
 
