@@ -2,14 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-   tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
     <FrameLayout
         android:id="@+id/main_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
 
 
     <RadioGroup
@@ -17,32 +17,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-    <RadioButton
-        android:id="@+id/main_tab_item_discover"
-       style="@style/AppTheme.MainTabItem"
-        android:checked="true"
-        android:text="发现"/>
+
+        <RadioButton
+            android:id="@+id/main_tab_item_discover"
+            style="@style/AppTheme.MainTabItem"
+            android:checked="true"
+            android:drawableTop="@drawable/main_tab_item_discover_selector"
+            android:text="发现" />
 
         <RadioButton
             android:id="@+id/main_tab_item_custom"
             style="@style/AppTheme.MainTabItem"
-            android:text="定制听"/>
+            android:drawableTop="@drawable/main_tab_item_custom_selector"
+            android:text="定制听" />
 
         <RadioButton
 
             style="@style/AppTheme.MainTabItem"
-            android:enabled="false"
-            />
+            android:enabled="false" />
 
         <RadioButton
             android:id="@+id/main_tab_item_download"
             style="@style/AppTheme.MainTabItem"
-            android:text="下载听"/>
+            android:drawableTop="@drawable/main_tab_item_download_selector"
+            android:text="下载听" />
 
         <RadioButton
             android:id="@+id/main_tab_item_personal"
             style="@style/AppTheme.MainTabItem"
-            android:text="我"/>
+            android:drawableTop="@drawable/main_tab_item_personal_selector"
+            android:text="我"
+            />
     </RadioGroup>
 
 </LinearLayout>

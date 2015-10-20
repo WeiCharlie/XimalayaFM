@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 /**
  * 启动扉页
+ * 扉页中包含了广告图片，跳过，还有软件名称
  */
 public class SplashActivity extends FragmentActivity implements Runnable{
 
@@ -21,6 +22,7 @@ public class SplashActivity extends FragmentActivity implements Runnable{
         Thread thread = new Thread(this);
         thread.start();
     }
+
 
     @Override
     public void run() {

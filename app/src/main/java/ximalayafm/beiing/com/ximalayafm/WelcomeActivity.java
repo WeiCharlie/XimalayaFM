@@ -9,6 +9,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+/**
+ * 欢迎页面，当第一次安装或者更新之后需要显示
+ */
 public class WelcomeActivity extends FragmentActivity {
 
     @Override
@@ -19,7 +22,7 @@ public class WelcomeActivity extends FragmentActivity {
         SharedPreferences sp = getSharedPreferences(Constants.SP_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.putInt(Constants.SP_KEY_WELCOME_SHOW_VER, BuildConfig.VERSION_CODE);
-        editor.apply();
+        editor.apply();  // 更推荐用apply
 
     }
 

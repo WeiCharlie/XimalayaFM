@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- checked属性是选定的时候显示，pressed属性是当按下时显示 -->
+    <item android:drawable="@mipmap/tab1_down" android:state_checked="true" />
+    <item android:drawable="@mipmap/tab1_down" android:state_pressed="true" />
+    <item android:drawable="@mipmap/tab1"/>
+</selector>
