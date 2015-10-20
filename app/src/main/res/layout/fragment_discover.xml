@@ -30,9 +30,9 @@
         android:id="@+id/discover_tab_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabIndicatorColor="#ffff9882"
+        app:tabIndicatorColor="#FC5832"
         app:tabIndicatorHeight="3dp"
-        app:tabSelectedTextColor="#ffff9882"
+        app:tabSelectedTextColor="#FC5832"
         app:tabMode="fixed"
 
         />

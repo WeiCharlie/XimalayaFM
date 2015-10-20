@@ -10,6 +10,7 @@ import android.os.AsyncTask;
  */
 public class DiscoverRecommendTask extends BaseTask{
 
+    private TaskCallBack callBack;
 
     public DiscoverRecommendTask(TaskCallBack callBack) {
         super(callBack);

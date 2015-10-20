@@ -57,4 +57,7 @@ public final class ClientAPI {
     // -----------------------
     // -----------------------
 
+
+    // 自己测试使用图片网址
+    public static final String AD_IMAGE = "http://img1.mydrivers.com/img/20150701/05e6b44457ad48549b09efbb03f43f6a.jpg";
 }

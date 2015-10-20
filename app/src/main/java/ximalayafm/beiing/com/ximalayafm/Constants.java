@@ -24,6 +24,12 @@ public class Constants {
 
     // 异步任务Action定义
     public static final int TASK_ACTION_DISCOVER_CATEGORIES = 1;
+
+
+
+
+    // 自己测试使用常量,下载图片的对应值
+    public static final int TASK_ACTION_DISCOVER_IMAGE = 100;
 }
 
 
