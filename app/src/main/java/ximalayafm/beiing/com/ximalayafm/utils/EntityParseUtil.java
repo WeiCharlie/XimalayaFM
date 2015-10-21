@@ -7,6 +7,8 @@ package ximalayafm.beiing.com.ximalayafm.utils;
  * Email: charlie_net@163.com
  */
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -75,8 +77,10 @@ public final class EntityParseUtil {
                 int code = jsonObject.getInt("ret");
                 if (code == Constants.TASK_RESULT_OK) {
                     ret = new LinkedList<DiscoverRecommenItem>();
-                    // 小编推荐内容解析
+                    Log.d("JSON","--" + code+"   == " + jsonObject);
+                    // 小编推荐内容解析editorRecommendAlbums
                     JSONObject obj = jsonObject.getJSONObject("editorRecommendAlbums");
+                    Log.d("JSONObject" ," --" + obj);// 进不去
                     DiscoverRecommendAlbums editor = new DiscoverRecommendAlbums();
                     editor.parseJSON(obj);
                     ret.add(editor);

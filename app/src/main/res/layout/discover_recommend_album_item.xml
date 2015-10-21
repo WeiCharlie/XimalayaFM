@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 顶部内容-->
+
+    <TextView
+        android:id="@+id/recommend_album_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="小编推荐" />
+
+    <TextView
+        android:id="@+id/recommend_album_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="更多>" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/recommend_album_title"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="5dp"
+            >
+
+            <ImageView
+                android:id="@+id/recommend_album_icon_0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/recommend_album_name_0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/recommend_album_icon_0"
+                android:background="#c666"
+                android:text="专辑名称"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/recommend_album_track_name_0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/recommend_album_icon_0"
+                android:text="曲目名称" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            >
+
+            <ImageView
+                android:id="@+id/recommend_album_icon_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/recommend_album_name_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/recommend_album_icon_1"
+                android:background="#c666"
+                android:text="专辑名称"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/recommend_album_track_name_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/recommend_album_icon_1"
+                android:text="曲目名称" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            >
+
+            <ImageView
+                android:id="@+id/recommend_album_icon_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/recommend_album_name_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/recommend_album_icon_2"
+                android:background="#c666"
+                android:text="专辑名称"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/recommend_album_track_name_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/recommend_album_icon_2"
+                android:text="曲目名称" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</RelativeLayout>

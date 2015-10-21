@@ -22,7 +22,7 @@ public class DiscoverRecommendAlbums extends DiscoverRecommenItem {
         // 调用父类的解析，解析父类需要使用的数据
         // 因为super中包含了title  和hasMore，
         super.parseJSON(json);
-        ret = json.getInt("ret");
+        ret = json.optInt("ret",0);
 
         JSONArray jsonArray = json.getJSONArray("list");
         int len = jsonArray.length();

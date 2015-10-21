@@ -1,6 +1,7 @@
 package ximalayafm.beiing.com.ximalayafm.tasks;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,12 +25,12 @@ public class DiscoverRecommendTask extends BaseTask{
 
     @Override
     protected TaskResult doInBackground(String... params) {
-        TaskResult ret = null;
+        TaskResult ret = new TaskResult();
 
         ret.action = Constants.TASK_ACTION_DISCOVER_RECOMMEND;
-
+        Log.d("jsonObject","----");
         JSONObject jsonObject = ClientAPI.getDiscoverRecommend("and-f6", true, true);
-
+        Log.d("jsonObject","----"+jsonObject);
         if (jsonObject != null) {
             try {
                 ret.resultCode = jsonObject.getInt("ret");

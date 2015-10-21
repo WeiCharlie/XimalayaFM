@@ -35,7 +35,7 @@ public class DiscoverRecommendFragment extends BaseFragment implements TaskCallB
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         items = new LinkedList<DiscoverRecommenItem>();

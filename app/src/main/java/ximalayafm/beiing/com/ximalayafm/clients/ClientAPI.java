@@ -80,16 +80,19 @@ public final class ClientAPI {
                 + "/mobile/discovery/v1/recommends"
                 + "?channel=" + channel
                 + "&device=android"
-                + "&includeActivity" + includeActivity
-                + "&includeSpecial" + includeSpecial
+                + "&includeActivity=" + includeActivity
+                + "&includeSpecial=" + includeSpecial
                 + "&scale=2&version=4.1.7.1";
-
+Log.d("URL",url);
         byte[] data = HttpTools.doGet(url);
+        Log.d("Data","data" + data);
+        Log.d("Url", url);
         if (data != null) {
             try {
 
                 String str = new String(data,"utf-8");
                 ret = new JSONObject(str);
+                Log.d("JSONString"," -- " + str);
 
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();

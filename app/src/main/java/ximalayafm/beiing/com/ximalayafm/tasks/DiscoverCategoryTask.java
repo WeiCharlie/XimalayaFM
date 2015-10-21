@@ -38,7 +38,7 @@ public class DiscoverCategoryTask extends BaseTask {
             try {
                 ret.resultCode = jsonObject.getInt("ret");
 
-                ret.data = EntityParseUtil.parseDiscoverRecommend(jsonObject);
+                ret.data = EntityParseUtil.parseDiscoverCategories(jsonObject);
 
             } catch (JSONException e) {
                 e.printStackTrace();

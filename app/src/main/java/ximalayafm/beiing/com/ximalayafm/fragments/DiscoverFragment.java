@@ -37,9 +37,9 @@ public class DiscoverFragment extends Fragment implements TabLayout.OnTabSelecte
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view=inflater.inflate(R.layout.fragment_discover, container, false);
+        View view = inflater.inflate(R.layout.fragment_discover, container, false);
 
-        TabLayout tabLayout= (TabLayout) view.findViewById(R.id.discover_tab_bar);
+        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.discover_tab_bar);
 
 //        //创建tab
 //        TabLayout.Tab tab=tabLayout.newTab().setText("推荐 ");
@@ -61,22 +61,22 @@ public class DiscoverFragment extends Fragment implements TabLayout.OnTabSelecte
         pager = (ViewPager) view.findViewById(R.id.discover_viewPager);
 
         List<BaseFragment> fragments = new LinkedList<BaseFragment>();
-        fragments.add(new DiscoverAnchorFragment());
+        fragments.add(new DiscoverRecommendFragment());
         fragments.add(new DiscoverCategoryFragment());
         fragments.add(new DiscoverLifeFragment());
         fragments.add(new DiscoverRatingFragment());
-        fragments.add(new DiscoverRecommendFragment());
+        fragments.add(new DiscoverAnchorFragment());
 
         // 如果在fragment内部使用adapter必须使用getChildFragmentManger
-        CommonFragmentPagerAdapter adapter = new CommonFragmentPagerAdapter(getChildFragmentManager(),fragments);
+        CommonFragmentPagerAdapter adapter = new CommonFragmentPagerAdapter(getChildFragmentManager(), fragments);
         pager.setAdapter(adapter);
 
-//        // ViewPager滑动与TabLayout绑定
-//        pager.addOnPageChangeListener(
-//                new TabLayout.TabLayoutOnPageChangeListener(tabLayout));// 支持多个事件同时处理
-//
-//        // 设置tab的点击Viewpager联动
-//        tabLayout.setOnTabSelectedListener(this);
+        // ViewPager滑动与TabLayout绑定
+        pager.addOnPageChangeListener(
+                new TabLayout.TabLayoutOnPageChangeListener(tabLayout));// 支持多个事件同时处理
+
+        // 设置tab的点击Viewpager联动
+        tabLayout.setOnTabSelectedListener(this);
 
         //  封装了tablayout 与 Viewpager的联动
         // 需要Viewpager内部指定的adapter必须要重写getpagetitle方法
@@ -86,6 +86,7 @@ public class DiscoverFragment extends Fragment implements TabLayout.OnTabSelecte
 
     /**
      * 实现的方法
+     *
      * @param tab
      */
     @Override

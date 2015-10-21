@@ -14,13 +14,14 @@ import java.util.zip.GZIPInputStream;
 
 public final class HttpTools {
 
+    // 手机型号等信息
     public static final String USER_AGNET = "ting_4.1.7(" + Build.MODEL + "," + Build.VERSION.SDK_INT + ")";
 
     private HttpTools(){
 
     }
-    private static final int CONNECT_TIMEOUT = 5000;
-    private static final int READ_TIMEOUT = 10000;
+    private static final int CONNECT_TIMEOUT = 10000;
+    private static final int READ_TIMEOUT = 30000;
 
     /**
      *
@@ -30,9 +31,10 @@ public final class HttpTools {
     public  static byte[] doGet(String url){
         byte[] ret = null;
         if (url != null) {
+            HttpURLConnection conn = null;
             try {
                 URL u = new URL(url);
-                HttpURLConnection conn = (HttpURLConnection)u.openConnection();
+                 conn = (HttpURLConnection)u.openConnection();
 
                 // 设置连接的配置
                 conn.setConnectTimeout(CONNECT_TIMEOUT);
@@ -48,6 +50,7 @@ public final class HttpTools {
 
                 // 设置User-Agent
                 conn.setRequestProperty("User-Agent", USER_AGNET);
+                conn.setDoOutput(true);
                 conn.connect();
 
                 int code = conn.getResponseCode();
@@ -76,6 +79,8 @@ public final class HttpTools {
 
             } catch (Exception e) {
                 e.printStackTrace();
+            }finally {
+                StreamUtils.close(conn);
             }
         }
         return ret;
