@@ -37,6 +37,38 @@ public class AlbumRecommend extends AlbumBasic {
     private long trackId;
     private String trackTitle;
 
+    public long getPlaysCounts() {
+        return playsCounts;
+    }
+
+    public void setPlaysCounts(long playsCounts) {
+        this.playsCounts = playsCounts;
+    }
+
+    public int getIsFinished() {
+        return isFinished;
+    }
+
+    public void setIsFinished(int isFinished) {
+        this.isFinished = isFinished;
+    }
+
+    public long getTrackId() {
+        return trackId;
+    }
+
+    public void setTrackId(long trackId) {
+        this.trackId = trackId;
+    }
+
+    public String getTrackTitle() {
+        return trackTitle;
+    }
+
+    public void setTrackTitle(String trackTitle) {
+        this.trackTitle = trackTitle;
+    }
+
     public void parseJSON(JSONObject jsonObject) throws JSONException {
         super.parseJSON(jsonObject);
 

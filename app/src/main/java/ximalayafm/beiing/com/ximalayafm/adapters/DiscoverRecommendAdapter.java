@@ -15,10 +15,13 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.lidroid.xutils.BitmapUtils;
+
 import java.lang.reflect.Field;
 import java.util.List;
 
 import ximalayafm.beiing.com.ximalayafm.R;
+import ximalayafm.beiing.com.ximalayafm.bean.AlbumBasic;
 import ximalayafm.beiing.com.ximalayafm.bean.discoverrecommends.DiscoverRecommenColumns;
 import ximalayafm.beiing.com.ximalayafm.bean.discoverrecommends.DiscoverRecommenItem;
 import ximalayafm.beiing.com.ximalayafm.bean.discoverrecommends.DiscoverRecommendAlbums;
@@ -140,6 +143,16 @@ public class DiscoverRecommendAdapter extends BaseAdapter {
         String title = albums.getTitle();
         holder.txtTitle.setText(title);
 
+        //  为设置图片和标签做铺垫
+        BitmapUtils bitmapUtils = new BitmapUtils(context);
+        List<AlbumBasic> list = albums.albumBasics;
+
+        for (int i = 0; i < 3; i++) {// 遍历item设置各个推荐图片和标题
+            bitmapUtils.display(holder.albumIcons[i],list.get(i).getCoverLarge());
+            holder.albumNames[i].setText(list.get(i).getTitle());
+            holder.trackNames[i].setText(list.get(i).getTags());
+        }
+
         return ret;
     }
 
@@ -164,7 +177,10 @@ public class DiscoverRecommendAdapter extends BaseAdapter {
      * @return
      */
     private View bindSpecialView(int position, View convertView, ViewGroup parent) {
-        return null;
+        View ret = null;
+
+
+        return ret;
     }
 
     /**

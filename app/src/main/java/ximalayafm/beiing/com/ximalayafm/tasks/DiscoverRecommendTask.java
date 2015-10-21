@@ -28,12 +28,13 @@ public class DiscoverRecommendTask extends BaseTask{
         TaskResult ret = new TaskResult();
 
         ret.action = Constants.TASK_ACTION_DISCOVER_RECOMMEND;
-        Log.d("jsonObject","----");
         JSONObject jsonObject = ClientAPI.getDiscoverRecommend("and-f6", true, true);
-        Log.d("jsonObject","----"+jsonObject);
+
         if (jsonObject != null) {
             try {
                 ret.resultCode = jsonObject.getInt("ret");
+
+
                 // 解析数据
                 ret.data = EntityParseUtil.parseDiscoverRecommend(jsonObject);
 
