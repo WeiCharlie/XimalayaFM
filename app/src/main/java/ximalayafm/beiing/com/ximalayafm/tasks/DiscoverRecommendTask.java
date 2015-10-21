@@ -2,6 +2,13 @@ package ximalayafm.beiing.com.ximalayafm.tasks;
 
 import android.os.AsyncTask;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import ximalayafm.beiing.com.ximalayafm.Constants;
+import ximalayafm.beiing.com.ximalayafm.clients.ClientAPI;
+import ximalayafm.beiing.com.ximalayafm.utils.EntityParseUtil;
+
 /**
  * Created by  :
  * Author: Charlie Wei
@@ -10,7 +17,6 @@ import android.os.AsyncTask;
  */
 public class DiscoverRecommendTask extends BaseTask{
 
-    private TaskCallBack callBack;
 
     public DiscoverRecommendTask(TaskCallBack callBack) {
         super(callBack);
@@ -18,7 +24,25 @@ public class DiscoverRecommendTask extends BaseTask{
 
     @Override
     protected TaskResult doInBackground(String... params) {
-        return null;
+        TaskResult ret = null;
+
+        ret.action = Constants.TASK_ACTION_DISCOVER_RECOMMEND;
+
+        JSONObject jsonObject = ClientAPI.getDiscoverRecommend("and-f6", true, true);
+
+        if (jsonObject != null) {
+            try {
+                ret.resultCode = jsonObject.getInt("ret");
+                // 解析数据
+                ret.data = EntityParseUtil.parseDiscoverRecommend(jsonObject);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        return ret;
     }
 
 

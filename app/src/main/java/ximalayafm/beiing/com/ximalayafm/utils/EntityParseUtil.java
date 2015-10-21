@@ -58,4 +58,12 @@ public final class EntityParseUtil {
         return ret;
 
     }
+
+    public static List parseDiscoverRecommend(JSONObject jsonObject) {
+        List ret = null;
+
+
+
+        return ret;
+    }
 }

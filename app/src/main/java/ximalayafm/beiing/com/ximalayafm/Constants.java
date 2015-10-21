@@ -9,6 +9,8 @@ package ximalayafm.beiing.com.ximalayafm;
  */
 public class Constants {
 
+    public static final int TASK_ACTION_DISCOVER_RECOMMEND = 2;
+
     private Constants(){
 
     }
