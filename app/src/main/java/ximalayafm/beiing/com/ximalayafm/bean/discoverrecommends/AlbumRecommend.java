@@ -11,6 +11,10 @@ import ximalayafm.beiing.com.ximalayafm.bean.AlbumBasic;
  * Date: 2015/10/21.
  * Email: charlie_net@163.com
  */
+
+/**
+ * 发现推荐内部的一个专辑推荐，最终可以组合一个”小编推荐“
+ */
 public class AlbumRecommend extends AlbumBasic {
     /*
      *  {
