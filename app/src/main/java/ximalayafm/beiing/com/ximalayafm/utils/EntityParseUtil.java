@@ -85,14 +85,14 @@ public final class EntityParseUtil {
                     ret.add(editor);
 
                     // ---------------------------------------
-/*
+
                     // TODO 解析精品听单
                     JSONObject specialColumnJSON = jsonObject.getJSONObject("specialColumn");
                     DiscoverRecommendSpecial special = new DiscoverRecommendSpecial();
                     special.parseJSON(specialColumnJSON);
                     ret.add(special);
 
-*/
+
                     // TODO 解析发现新奇
 
                     // 解析热门推荐内部的内容

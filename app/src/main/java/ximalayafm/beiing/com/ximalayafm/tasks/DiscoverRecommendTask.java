@@ -34,7 +34,7 @@ public class DiscoverRecommendTask extends BaseTask{
             try {
                 ret.resultCode = jsonObject.getInt("ret");
 
-
+// ret.data = jsonObject;
                 // 解析数据
                 ret.data = EntityParseUtil.parseDiscoverRecommend(jsonObject);
 

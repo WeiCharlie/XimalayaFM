@@ -41,9 +41,20 @@ public class DiscoverRecommendAdapter extends BaseAdapter {
     private Context context;
     private List<DiscoverRecommenItem> items;
 
+    // ---------------------------------------点击事件处理器
+    /**
+     * 推荐专辑点击事件
+     */
+    private View.OnClickListener onRecommendAlbumClickListener;
+
+    // -------------------------------------
     public DiscoverRecommendAdapter(Context context, List<DiscoverRecommenItem> items) {
         this.context = context;
         this.items = items;
+    }
+
+    public void setOnRecommendAlbumClickListener(View.OnClickListener onRecommendAlbumClickListener) {
+        this.onRecommendAlbumClickListener = onRecommendAlbumClickListener;
     }
 
     @Override
@@ -129,6 +140,10 @@ public class DiscoverRecommendAdapter extends BaseAdapter {
             holder = new AlbumViewHolder();
             holder.txtTitle = (TextView) ret.findViewById(R.id.recommend_album_title);
             holder.txtMore = (TextView) ret.findViewById(R.id.recommend_album_more);
+
+            // TODO 点击more进入推荐列表
+
+
             holder.albumIcons = new ImageView[3];
             holder.albumNames = new TextView[3];
             holder.trackNames = new TextView[3];
@@ -136,6 +151,11 @@ public class DiscoverRecommendAdapter extends BaseAdapter {
             for (int i = 0; i < 3; i++) {
                 // 给holder设置数组的内容
                 holder.albumIcons[i] = (ImageView) findView(ret, "recommend_album_icon_" + i);
+
+                // TODO 点击专辑图片进入专辑详情
+                holder.albumIcons[i].setOnClickListener(onRecommendAlbumClickListener);
+
+
                 holder.albumNames[i] = (TextView) findView(ret, "recommend_album_name_" + i);
                 holder.trackNames[i] = (TextView) findView(ret, "recommend_album_track_name_" + i);
 
@@ -171,10 +191,15 @@ public class DiscoverRecommendAdapter extends BaseAdapter {
                 // 使用picasso加载图片
                 String coverLarge = albumRecommend.getCoverLarge();
                 // 创建实例，设置加载网址，设置居中裁剪，设置ImageView
+
+                // 设置Tag
+                ImageView imageView = holder.albumIcons[i];
+//                imageView.setTag("albumRecommend:" + position+":" +i);
+                imageView.setTag(albumRecommend);
                 Picasso.with(context).load(coverLarge)
 //                        .resize(128,128)
 //                        .centerCrop()
-                        .into(holder.albumIcons[i]);
+                        .into(imageView);
             }
         }
 
@@ -235,9 +260,9 @@ public class DiscoverRecommendAdapter extends BaseAdapter {
         // 3 获取数据，处理数据，显示数据
         DiscoverRecommendSpecial special = (DiscoverRecommendSpecial) items.get(position);
         holder.txtTile.setText(special.getTitle());
-        if (special.isHasMore()){
+        if (special.isHasMore()) {
             holder.txtMore.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             holder.txtMore.setVisibility(View.INVISIBLE);
         }
         // 3.1 清空旧数据linearlyout再根据听单的item来添加
@@ -248,7 +273,7 @@ public class DiscoverRecommendAdapter extends BaseAdapter {
             int index = -1;
             int itemtCount = specialItems.size();
             for (SpecialItem s : specialItems) {
-                index ++;
+                index++;
                 // 创建自定义View，用来显示听单信息
                 SpecialItemView itemView = new SpecialItemView(context);
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -256,7 +281,7 @@ public class DiscoverRecommendAdapter extends BaseAdapter {
                 itemView.setLayoutParams(lp);
                 holder.itemContainer.addView(itemView);
 
-                Log.d("Add"," --" + s);
+                Log.d("Add", " --" + s);
                 // 设置听单内容
                 String title = s.getTitle();
                 itemView.setTitle(title);
@@ -269,7 +294,7 @@ public class DiscoverRecommendAdapter extends BaseAdapter {
                 Picasso.with(context).load(coverPath).into(imageView);
 
                 // 判断是否是最后一个
-                if (index == itemtCount -1){
+                if (index == itemtCount - 1) {
                     itemView.setBottomLine(false);
                 }
             }
@@ -279,11 +304,10 @@ public class DiscoverRecommendAdapter extends BaseAdapter {
     }
 
 
-
     /**
      * 精品听单ViewHolder
      */
-    private static class SpecialViewHolder{
+    private static class SpecialViewHolder {
         public TextView txtTile;
         public TextView txtMore;
         public LinearLayout itemContainer;//存储SpecailItemView

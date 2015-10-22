@@ -27,6 +27,7 @@ public class Constants {
     // 异步任务Action定义
     public static final int TASK_ACTION_DISCOVER_CATEGORIES = 1;
 
+    public static final String TAG_DISCOVER_RECOMMEND_ALBUM = "albumRecommend:";
 
 
 
