@@ -185,9 +185,11 @@ public class DiscoverRecommendFragment extends BaseFragment implements TaskCallB
                 AlbumRecommend albumRecommend = (AlbumRecommend) tag;
 
                 // 专辑Id
-                albumRecommend.getAlbumId();
-                // 曲目ID
-                albumRecommend.getTrackId();
+                // 接口17 获取专辑详情和曲目
+                // 专辑id
+                long albumId = albumRecommend.getAlbumId();
+                // 曲目ID  接口20
+                long trackId = albumRecommend.getTrackId();
             }
         }
 
