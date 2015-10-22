@@ -6,4 +6,5 @@
     <item type="id" name="special_item_icon"   />
 <item name="special_item_title" type="id"/>
 <item name="sprcial_item_subtiel" type="id"/>
+    <item name="special_item_number" type="id"/>
 </resources>

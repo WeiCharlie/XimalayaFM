@@ -8,11 +8,13 @@ package ximalayafm.beiing.com.ximalayafm.adapters;
  */
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.lidroid.xutils.BitmapUtils;
@@ -28,6 +30,8 @@ import ximalayafm.beiing.com.ximalayafm.bean.discoverrecommends.DiscoverRecommen
 import ximalayafm.beiing.com.ximalayafm.bean.discoverrecommends.DiscoverRecommenItem;
 import ximalayafm.beiing.com.ximalayafm.bean.discoverrecommends.DiscoverRecommendAlbums;
 import ximalayafm.beiing.com.ximalayafm.bean.discoverrecommends.DiscoverRecommendSpecial;
+import ximalayafm.beiing.com.ximalayafm.bean.discoverrecommends.SpecialItem;
+import ximalayafm.beiing.com.ximalayafm.widgets.SpecialItemView;
 
 /**
  * 发现推荐部分的ListView Adapter，支持多布局复用
@@ -146,9 +150,9 @@ public class DiscoverRecommendAdapter extends BaseAdapter {
         holder.txtTitle.setText(title);
 
         // 处理 “更多”
-        if (albums.isHasMore()){
+        if (albums.isHasMore()) {
             holder.txtMore.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             holder.txtMore.setVisibility(View.INVISIBLE);
         }
 
@@ -156,12 +160,12 @@ public class DiscoverRecommendAdapter extends BaseAdapter {
         List<AlbumRecommend> albumRecommends = albums.getAlbumRecommends();
         int len = holder.albumIcons.length;
 
-        if(albumRecommends != null) {
+        if (albumRecommends != null) {
             for (int i = 0; i < len; i++) {
                 AlbumRecommend albumRecommend = albumRecommends.get(i);
-                title=  albumRecommend.getTitle();// 获取专辑名称
-               holder.albumNames[i].setText(title);
-               title = albumRecommend.getTrackTitle(); // 获取推荐曲目的名称
+                title = albumRecommend.getTitle();// 获取专辑名称
+                holder.albumNames[i].setText(title);
+                title = albumRecommend.getTrackTitle(); // 获取推荐曲目的名称
                 holder.trackNames[i].setText(title);
 
                 // 使用picasso加载图片
@@ -209,9 +213,80 @@ public class DiscoverRecommendAdapter extends BaseAdapter {
      */
     private View bindSpecialView(int position, View convertView, ViewGroup parent) {
         View ret = null;
+        // 1 复用
+        if (convertView != null) {
+            ret = convertView;
 
+        } else {
+            LayoutInflater inflater = LayoutInflater.from(context);
+            ret = inflater.inflate(R.layout.discover_recommend_special_item, parent, false);
+
+        }
+        // 2 ViewHolder 处理
+        SpecialViewHolder holder = (SpecialViewHolder) ret.getTag();
+        if (holder == null) {
+            holder = new SpecialViewHolder();
+            holder.txtTile = (TextView) ret.findViewById(R.id.recommend_special_title);
+            holder.txtMore = (TextView) ret.findViewById(R.id.recommend_special_more);
+            holder.itemContainer = (LinearLayout) ret.findViewById(R.id.recommend_special_container);
+
+            ret.setTag(holder);
+        }
+        // 3 获取数据，处理数据，显示数据
+        DiscoverRecommendSpecial special = (DiscoverRecommendSpecial) items.get(position);
+        holder.txtTile.setText(special.getTitle());
+        if (special.isHasMore()){
+            holder.txtMore.setVisibility(View.VISIBLE);
+        }else {
+            holder.txtMore.setVisibility(View.INVISIBLE);
+        }
+        // 3.1 清空旧数据linearlyout再根据听单的item来添加
+        holder.itemContainer.removeAllViews();
+        List<SpecialItem> specialItems = special.getSpecialItems();
+        if (specialItems != null) {
+
+            int index = -1;
+            int itemtCount = specialItems.size();
+            for (SpecialItem s : specialItems) {
+                index ++;
+                // 创建自定义View，用来显示听单信息
+                SpecialItemView itemView = new SpecialItemView(context);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+                itemView.setLayoutParams(lp);
+                holder.itemContainer.addView(itemView);
+
+                Log.d("Add"," --" + s);
+                // 设置听单内容
+                String title = s.getTitle();
+                itemView.setTitle(title);
+                itemView.setTxtSubtitle(s.getSubtitle());
+                itemView.setTxtNumber(s.getFootnote());
+
+                // 获取听单的图标ImageView，加载图片
+                ImageView imageView = itemView.getImgIcon();
+                String coverPath = s.getCoverPath();
+                Picasso.with(context).load(coverPath).into(imageView);
+
+                // 判断是否是最后一个
+                if (index == itemtCount -1){
+                    itemView.setBottomLine(false);
+                }
+            }
+        }
 
         return ret;
+    }
+
+
+
+    /**
+     * 精品听单ViewHolder
+     */
+    private static class SpecialViewHolder{
+        public TextView txtTile;
+        public TextView txtMore;
+        public LinearLayout itemContainer;//存储SpecailItemView
     }
 
     /**

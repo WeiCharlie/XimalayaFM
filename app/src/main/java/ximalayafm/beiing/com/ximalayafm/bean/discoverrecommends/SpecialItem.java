@@ -32,10 +32,66 @@ public class SpecialItem implements Parseable {
             title = jsonObject.getString("title");
 
             subtitle = jsonObject.optString("subtitle");
-            columnType = jsonObject.optInt("columnType",1);
+            columnType = jsonObject.optInt("columnType", 1);
             footnote = jsonObject.optString("footnote");
             coverPath = jsonObject.optString("coverPath");
             contentType = jsonObject.optString("contentType");
         }
+    }
+
+    public int getColumnType() {
+        return columnType;
+    }
+
+    public void setColumnType(int columnType) {
+        this.columnType = columnType;
+    }
+
+    public long getSpecialId() {
+        return specialId;
+    }
+
+    public void setSpecialId(long specialId) {
+        this.specialId = specialId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getSubtitle() {
+        return subtitle;
+    }
+
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
+    }
+
+    public String getFootnote() {
+        return footnote;
+    }
+
+    public void setFootnote(String footnote) {
+        this.footnote = footnote;
+    }
+
+    public String getCoverPath() {
+        return coverPath;
+    }
+
+    public void setCoverPath(String coverPath) {
+        this.coverPath = coverPath;
+    }
+
+    public String getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
     }
 }
