@@ -3,5 +3,5 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="discover_recommend_list_divider_height">10dp</dimen>
-    <dimen name="discover_recommend_item_album_icon_height">120dp</dimen>
+    <dimen name="discover_recommend_item_album_icon_height">100dp</dimen>
 </resources>

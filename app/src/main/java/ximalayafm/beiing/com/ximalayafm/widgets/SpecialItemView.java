@@ -12,6 +12,7 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.ViewGroup;
@@ -74,8 +75,14 @@ public class SpecialItemView extends RelativeLayout {
         // LayoutParams 代表在布局中的android : layout_xxx 属性
         // 控件要添加到那一个容器中，就用哪一个容器的layoutParams
         RelativeLayout.LayoutParams lp = new LayoutParams(
-                DimensionUtil.dp2px(context,120),
-                DimensionUtil.dp2px(context,120));
+                DimensionUtil.dp2px(context,60),
+                DimensionUtil.dp2px(context,60));
+        lp.setMargins(
+                DimensionUtil.dp2px(context,8)
+                ,DimensionUtil.dp2px(context,6)
+                ,DimensionUtil.dp2px(context,8)
+                ,DimensionUtil.dp2px(context,6));
+
         // ImageView垂直居中,相当于layout_centerVertical = true
         lp.addRule(CENTER_VERTICAL);
         imgIcon.setLayoutParams(lp);
@@ -99,7 +106,7 @@ public class SpecialItemView extends RelativeLayout {
         txtTitle.setLayoutParams(lp);
         txtTitle.setText("标题");
         // 设置字体尺寸 20sp
-        txtTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+        txtTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
         txtTitle.setTextColor(Color.BLACK);
         txtTitle.setId(R.id.special_item_title);
         txtTitle.setSingleLine();
@@ -115,10 +122,11 @@ public class SpecialItemView extends RelativeLayout {
         lp.addRule(ALIGN_LEFT, R.id.special_item_title);
         txtSubtitle.setLayoutParams(lp);
         txtSubtitle.setText("Subtitle");
-        txtSubtitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+        txtSubtitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
         txtSubtitle.setId(R.id.sprcial_item_subtiel);
         // 单行
-        txtSubtitle.setSingleLine();
+        txtSubtitle.setSingleLine(true);
+        txtSubtitle.setEllipsize(TextUtils.TruncateAt.END);// 设置单行显示的同时，未显示的用 ...
         addView(txtSubtitle);
 
         // -------------------------------------------
@@ -134,7 +142,7 @@ public class SpecialItemView extends RelativeLayout {
         txtNumber.setLayoutParams(lp);
         txtNumber.setId(R.id.special_item_number);
         txtNumber.setText("10首声音");
-        txtNumber.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+        txtNumber.setTextSize(TypedValue.COMPLEX_UNIT_SP, 10);
         // 给textView设置左面的图标
         // 这个方法可以同时设置左上右下图标,图标必须经过setBounds
         // 使用V4包获取Drawable方式，

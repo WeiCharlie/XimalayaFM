@@ -1,17 +1,27 @@
 package ximalayafm.beiing.com.ximalayafm.fragments.discaover;
 
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.Adapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.lidroid.xutils.BitmapUtils;
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -25,11 +35,13 @@ import ximalayafm.beiing.com.ximalayafm.adapters.PicPagerAdapter;
 import ximalayafm.beiing.com.ximalayafm.bean.discoverrecommends.AlbumRecommend;
 import ximalayafm.beiing.com.ximalayafm.bean.discoverrecommends.DiscoverRecommenItem;
 import ximalayafm.beiing.com.ximalayafm.bean.discoverrecommends.DiscoverRecommendAlbums;
+import ximalayafm.beiing.com.ximalayafm.bean.discoverrecommends.RollImage;
 import ximalayafm.beiing.com.ximalayafm.fragments.BaseFragment;
 import ximalayafm.beiing.com.ximalayafm.tasks.DiscoverRecommendTask;
 import ximalayafm.beiing.com.ximalayafm.tasks.TaskCallBack;
 import ximalayafm.beiing.com.ximalayafm.tasks.TaskResult;
 import ximalayafm.beiing.com.ximalayafm.utils.DimensionUtil;
+import ximalayafm.beiing.com.ximalayafm.utils.HttpTools;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,11 +50,14 @@ public class DiscoverRecommendFragment extends BaseFragment implements TaskCallB
 
     private DiscoverRecommendAdapter adapter;
     private List<DiscoverRecommenItem> items;
+    private ViewPager viewPager;
     /**
      * 轮播海报
      */
     private ViewPager focusImagesPager;
     private PicPagerAdapter picPagerAdapter;
+    private List<ImageView> picData;
+    private ListView listView;
 
     public DiscoverRecommendFragment() {
         // Required empty public constructor
@@ -51,6 +66,7 @@ public class DiscoverRecommendFragment extends BaseFragment implements TaskCallB
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         items = new LinkedList<DiscoverRecommenItem>();
         adapter = new DiscoverRecommendAdapter(getActivity(), items);
@@ -62,7 +78,7 @@ public class DiscoverRecommendFragment extends BaseFragment implements TaskCallB
         // Inflate the layout for this fragment
         View ret = inflater.inflate(R.layout.fragment_discover_recommend, container, false);
 
-        ListView listView = (ListView) ret.findViewById(R.id.discover_recommend_list);
+        listView = (ListView) ret.findViewById(R.id.discover_recommend_list);
         listView.setDividerHeight(40);
 
         focusImagesPager = new ViewPager(getActivity());
@@ -71,15 +87,15 @@ public class DiscoverRecommendFragment extends BaseFragment implements TaskCallB
         );
 
         focusImagesPager.setLayoutParams(lp);
-        LinkedList picData = new LinkedList();
+        picData = new LinkedList<>();
         // TODO 假数据
-        for (int i = 0; i < 5; i++) {
-            picData.add("String" + i);
-        }
-        picPagerAdapter = new PicPagerAdapter(picData);
-        focusImagesPager.setAdapter(picPagerAdapter);
-        listView.addHeaderView(focusImagesPager);
 
+
+        Log.d("CreateView","" + picData.size());
+        picPagerAdapter = new PicPagerAdapter(picData);
+//        focusImagesPager.setAdapter(picPagerAdapter);
+        listView.addHeaderView(focusImagesPager);
+        Log.d("CreateView", "" + picData.size());
         // ----------------------------------------
         // 设置点击专辑推荐点击事件
         adapter.setOnRecommendAlbumClickListener(this);
@@ -138,7 +154,32 @@ public class DiscoverRecommendFragment extends BaseFragment implements TaskCallB
                             e.printStackTrace();
                         }
                         // TODO 解析海报
+                        try {
+                            JSONArray imgArray = jsonObject.getJSONArray("list");
+                            List<RollImage> rollImages = new LinkedList<>();
+                            int length = imgArray.length();
+                            for (int i = 0; i < length; i++) {
 
+                                Log.d("JSONArray",""+ length);
+                                JSONObject object = imgArray.getJSONObject(i);
+                                RollImage rollImage = new RollImage();
+                                rollImage.parseJSON(object);
+//                                rollImages.add(rollImage);
+
+                                ImageView imageView = new ImageView(getActivity());
+                                Picasso.with(getActivity()).load(rollImage.getPic()).into(imageView);
+
+                                picData.add(imageView);
+                                Toast.makeText(getActivity(),length+"",Toast.LENGTH_LONG).show();
+
+                            }
+
+                            picPagerAdapter = new PicPagerAdapter(picData);
+                            focusImagesPager.setAdapter(picPagerAdapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                         // 2 解析列表
                     }
                 }
@@ -150,6 +191,11 @@ public class DiscoverRecommendFragment extends BaseFragment implements TaskCallB
         }
     }
 
+    /**
+     * 专辑推荐的图标点击事件
+     *
+     * @param v
+     */
     @Override
     public void onClick(View v) {
 
@@ -158,7 +204,7 @@ public class DiscoverRecommendFragment extends BaseFragment implements TaskCallB
             if (tag instanceof String) {
                 String str = (String) tag;
                 if (str.startsWith(Constants.TAG_DISCOVER_RECOMMEND_ALBUM)) {
-                    // TODO 需要处理，专辑推荐的图标点击
+                    //  高逼格写法，轻易不要尝试，else if中的是常规写法
                     str = str.substring(Constants.TAG_DISCOVER_RECOMMEND_ALBUM.length());
                     int index = str.indexOf(":");
                     if (index > -1) {
@@ -180,7 +226,7 @@ public class DiscoverRecommendFragment extends BaseFragment implements TaskCallB
                         }
                     }
                 }
-            }else if (tag instanceof AlbumRecommend){
+            } else if (tag instanceof AlbumRecommend) {
                 // 也是专辑推荐
                 AlbumRecommend albumRecommend = (AlbumRecommend) tag;
 

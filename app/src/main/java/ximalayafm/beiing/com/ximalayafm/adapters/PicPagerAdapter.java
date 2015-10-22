@@ -8,10 +8,14 @@ package ximalayafm.beiing.com.ximalayafm.adapters;
  */
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import com.lidroid.xutils.BitmapUtils;
 
 import java.util.List;
 
@@ -22,9 +26,9 @@ import ximalayafm.beiing.com.ximalayafm.utils.DimensionUtil;
  * 轮播海报的ViewPagerAdapter
  */
 public class PicPagerAdapter extends PagerAdapter{
-    private List picData;
+    private List<ImageView> picData;
 
-    public PicPagerAdapter(List picData) {
+    public PicPagerAdapter(List<ImageView> picData) {
         this.picData = picData;
     }
 
@@ -32,12 +36,13 @@ public class PicPagerAdapter extends PagerAdapter{
     public int getCount() {
         int ret = 0;
         if (picData != null) {
-            if (picData .isEmpty()){
+            if (!picData .isEmpty()){
+                /**
+                 *
+                 */
                 ret = Integer.MAX_VALUE;// 使用整型最大值来描述假的循环
             }
-            else {
-                ret = picData.size();// TODO 自己写的
-            }
+
         }
         return ret;
     }
@@ -74,8 +79,11 @@ public class PicPagerAdapter extends PagerAdapter{
 
         // TODO 根据index获取点击位置，以及数据
 
-        ImageView ret = new ImageView(container.getContext());
-        ret.setImageResource(R.mipmap.ic_launcher);
+        ImageView ret = picData.get(index);
+        Log.d("PicPagerAdapter" ," " + picData.size());
+
+
+//        ret.setImageResource(R.mipmap.ic_launcher);
 
         ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, DimensionUtil.dp2px(context,100)

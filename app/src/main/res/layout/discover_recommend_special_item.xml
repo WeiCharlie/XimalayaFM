@@ -1,23 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+
+    android:descendantFocusability="afterDescendants"
+    >
 
     <TextView
         android:id="@+id/recommend_special_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:textSize="12sp"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="6dp"
+
         android:text="精品听单" />
 
     <TextView
         android:id="@+id/recommend_special_more"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
         android:layout_alignParentRight="true"
-        android:text="更多" />
+        android:layout_marginTop="6dp"
+        android:text="更多>"
+        android:gravity="center"
+        android:textSize="12sp"
+
+         />
 
     <LinearLayout
         android:id="@+id/recommend_special_container"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/recommend_special_title"

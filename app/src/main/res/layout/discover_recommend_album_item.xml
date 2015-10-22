@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/recommend_album_title"
         android:layout_width="60dp"
-        android:layout_height="20dp"
+        android:layout_height="30dp"
         android:textSize="12sp"
         android:gravity="center"
         android:text="小编推荐" />
@@ -16,7 +16,7 @@
     <TextView
         android:id="@+id/recommend_album_more"
         android:layout_width="60dp"
-        android:layout_height="20dp"
+        android:layout_height="30dp"
         android:textSize="12sp"
         android:gravity="center"
         android:layout_alignParentRight="true"
