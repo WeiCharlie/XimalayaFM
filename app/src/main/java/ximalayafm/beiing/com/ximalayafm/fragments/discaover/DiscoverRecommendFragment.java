@@ -49,8 +49,10 @@ public class DiscoverRecommendFragment extends BaseFragment implements TaskCallB
         View ret = inflater.inflate(R.layout.fragment_discover_recommend, container, false);
 
         ListView listView = (ListView) ret.findViewById(R.id.discover_recommend_list);
+        listView.setDividerHeight(40);
 
         listView.setAdapter(adapter);
+
 
         return ret;
     }

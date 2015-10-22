@@ -18,8 +18,18 @@ public class DiscoverRecommendAlbums extends DiscoverRecommenItem {
      * "list": []
      */
     private int ret;
+    // 推荐专辑
     private List<AlbumRecommend> albumRecommends;
-    public List<AlbumBasic> albumBasics;
+
+    public List<AlbumRecommend> getAlbumRecommends() {
+        return albumRecommends;
+    }
+
+    public void setAlbumRecommends(List<AlbumRecommend> albumRecommends) {
+        this.albumRecommends = albumRecommends;
+    }
+
+//    public List<AlbumBasic> albumBasics;
 
     public void parseJSON(JSONObject json) throws JSONException {
         // 调用父类的解析，解析父类需要使用的数据
@@ -30,17 +40,17 @@ public class DiscoverRecommendAlbums extends DiscoverRecommenItem {
         JSONArray jsonArray = json.getJSONArray("list");
         int len = jsonArray.length();
         albumRecommends = new LinkedList<AlbumRecommend>();
-        albumBasics = new LinkedList<>();// 设置图片和标题
+//        albumBasics = new LinkedList<>();// 设置图片和标题
         if (len > 0) {
             for (int i = 0; i < len; i++) {
 
                 // 解析内部的专辑推荐
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                //  TODO 推荐上显示的图片，标题内容等信息
-                AlbumBasic basic = new AlbumBasic();
-                basic.parseJSON(jsonObject);
-                albumBasics.add(basic);
+//                //  TODO 推荐上显示的图片，标题内容等信息
+//                AlbumBasic basic = new AlbumBasic();
+//                basic.parseJSON(jsonObject);
+//                albumBasics.add(basic);
 
                 AlbumRecommend albumRecommend = new AlbumRecommend();
                 albumRecommend.parseJSON(jsonObject);

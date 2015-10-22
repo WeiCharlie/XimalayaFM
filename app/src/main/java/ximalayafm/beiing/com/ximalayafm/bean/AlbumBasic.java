@@ -30,9 +30,20 @@ public class AlbumBasic {
     private String coverLarge;
     private String title;
     private String tags;
+//    private String trackTitle;
+
+//    public String getTrackTitle() {
+//        return trackTitle;
+//    }
+//
+//    public void setTrackTitle(String trackTitle) {
+//        this.trackTitle = trackTitle;
+//    }
+
     /**
      * 曲目数
      */
+
     private long tracks;
 
     public void parseJSON(JSONObject jsonObject) throws JSONException {
@@ -42,6 +53,7 @@ public class AlbumBasic {
             title = jsonObject.getString("title");
             tags = jsonObject.getString("tags");
             tracks = jsonObject.getLong("tracks");
+//            trackTitle = jsonObject.optString("trackTitle");
         }
     }
 

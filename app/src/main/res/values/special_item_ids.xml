@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  定义在代码中使用的ID 用于自定义View SpecialItemView-->
+    <!-- 定义的id就可以用R。id。xxx  相当于@+id/ xxx-->
+    <!-- 定义id不要使用format，最好写在前-->
+    <item type="id" name="special_item_icon"   />
+<item name="special_item_title" type="id"/>
+<item name="sprcial_item_subtiel" type="id"/>
+</resources>

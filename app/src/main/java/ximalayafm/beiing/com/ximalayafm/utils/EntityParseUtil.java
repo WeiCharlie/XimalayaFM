@@ -20,6 +20,7 @@ import ximalayafm.beiing.com.ximalayafm.Constants;
 import ximalayafm.beiing.com.ximalayafm.bean.DiscoverCategory;
 import ximalayafm.beiing.com.ximalayafm.bean.discoverrecommends.DiscoverRecommenItem;
 import ximalayafm.beiing.com.ximalayafm.bean.discoverrecommends.DiscoverRecommendAlbums;
+import ximalayafm.beiing.com.ximalayafm.bean.discoverrecommends.DiscoverRecommendSpecial;
 
 /**
  * 实体类的解析工具类
@@ -77,18 +78,21 @@ public final class EntityParseUtil {
                 int code = jsonObject.getInt("ret");
                 if (code == Constants.TASK_RESULT_OK) {
                     ret = new LinkedList<DiscoverRecommenItem>();
-                    Log.d("JSON","--" + code+"   == " + jsonObject);
                     // 小编推荐内容解析editorRecommendAlbums
                     JSONObject obj = jsonObject.getJSONObject("editorRecommendAlbums");
-                    Log.d("JSONObject" ," --" + obj);// 进不去
                     DiscoverRecommendAlbums editor = new DiscoverRecommendAlbums();
                     editor.parseJSON(obj);
                     ret.add(editor);
 
                     // ---------------------------------------
-
+/*
                     // TODO 解析精品听单
+                    JSONObject specialColumnJSON = jsonObject.getJSONObject("specialColumn");
+                    DiscoverRecommendSpecial special = new DiscoverRecommendSpecial();
+                    special.parseJSON(specialColumnJSON);
+                    ret.add(special);
 
+*/
                     // TODO 解析发现新奇
 
                     // 解析热门推荐内部的内容
@@ -103,6 +107,7 @@ public final class EntityParseUtil {
                         ret.add(hotRecommend);
 
                     }
+
 
                 }
 

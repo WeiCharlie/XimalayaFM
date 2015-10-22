@@ -7,20 +7,25 @@
 
     <TextView
         android:id="@+id/recommend_album_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:textSize="12sp"
+        android:gravity="center"
         android:text="小编推荐" />
 
     <TextView
         android:id="@+id/recommend_album_more"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:textSize="12sp"
+        android:gravity="center"
         android:layout_alignParentRight="true"
         android:text="更多>" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:layout_below="@id/recommend_album_title"
         android:orientation="horizontal">
 
@@ -35,7 +40,8 @@
             <ImageView
                 android:id="@+id/recommend_album_icon_0"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/discover_recommend_item_album_icon_height"
+                android:scaleType="centerCrop"
                 android:src="@mipmap/ic_launcher" />
 
             <TextView
@@ -45,6 +51,9 @@
                 android:layout_alignBottom="@id/recommend_album_icon_0"
                 android:background="#c666"
                 android:text="专辑名称"
+                android:textSize="10sp"
+                android:singleLine="true"
+                android:padding="2dp"
                 android:textColor="#fff" />
 
             <TextView
@@ -52,6 +61,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/recommend_album_icon_0"
+                android:layout_marginTop="4dp"
+                android:textSize="12sp"
+                android:maxLines="2"
                 android:text="曲目名称" />
 
         </RelativeLayout>
@@ -67,7 +79,8 @@
             <ImageView
                 android:id="@+id/recommend_album_icon_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/discover_recommend_item_album_icon_height"
+                android:scaleType="centerCrop"
                 android:src="@mipmap/ic_launcher" />
 
             <TextView
@@ -77,6 +90,9 @@
                 android:layout_alignBottom="@id/recommend_album_icon_1"
                 android:background="#c666"
                 android:text="专辑名称"
+                android:textSize="10sp"
+                android:singleLine="true"
+                android:padding="2dp"
                 android:textColor="#fff" />
 
             <TextView
@@ -84,6 +100,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/recommend_album_icon_1"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp"
+                android:maxLines="2"
                 android:text="曲目名称" />
 
         </RelativeLayout>
@@ -99,7 +118,8 @@
             <ImageView
                 android:id="@+id/recommend_album_icon_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/discover_recommend_item_album_icon_height"
+                android:scaleType="centerCrop"
                 android:src="@mipmap/ic_launcher" />
 
             <TextView
@@ -109,6 +129,9 @@
                 android:layout_alignBottom="@id/recommend_album_icon_2"
                 android:background="#c666"
                 android:text="专辑名称"
+                android:textSize="10sp"
+                android:singleLine="true"
+                android:padding="2dp"
                 android:textColor="#fff" />
 
             <TextView
@@ -116,6 +139,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/recommend_album_icon_2"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp"
+                android:maxLines="2"
                 android:text="曲目名称" />
 
         </RelativeLayout>

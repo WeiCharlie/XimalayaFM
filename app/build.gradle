@@ -26,5 +26,5 @@ dependencies {
     //或从网络中，自动下载相应的jar包方式，导入类库
     compile 'com.android.support:appcompat-v7:22.0.3'
     compile 'com.android.support:design:22.2.0'
-
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }
