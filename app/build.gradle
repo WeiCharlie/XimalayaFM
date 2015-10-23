@@ -24,7 +24,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     //若果使用的是 “groupId:名称：版本号”这种方式 ，代表从Android SDK
     //或从网络中，自动下载相应的jar包方式，导入类库
-    compile 'com.android.support:appcompat-v7:22.0.3'
     compile 'com.android.support:design:22.2.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile project(':pulltorefresh')
 }

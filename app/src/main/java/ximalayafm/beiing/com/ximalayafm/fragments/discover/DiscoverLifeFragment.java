@@ -1,4 +1,4 @@
-package ximalayafm.beiing.com.ximalayafm.fragments.discaover;
+package ximalayafm.beiing.com.ximalayafm.fragments.discover;
 
 
 import android.os.Bundle;

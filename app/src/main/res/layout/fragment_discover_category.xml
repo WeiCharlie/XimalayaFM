@@ -1,10 +1,31 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ximalayafm.beiing.com.ximalayafm.fragments.discaover.DiscoverCategoryFragment">
+    tools:context="ximalayafm.beiing.com.ximalayafm.fragments.discover.DiscoverCategoryFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       >
+       <Button
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="点我"
+           />
+       <ximalayafm.beiing.com.ximalayafm.widgets.FullListView
+           android:id="@+id/test_list"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
 
-</FrameLayout>
+
+       </ximalayafm.beiing.com.ximalayafm.widgets.FullListView>
+<Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="点我"/>
+
+   </LinearLayout>
+
+</ScrollView>

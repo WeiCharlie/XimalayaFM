@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:descendantFocusability="afterDescendants"
+    >
 
     <!-- 顶部内容-->
 
@@ -42,6 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/discover_recommend_item_album_icon_height"
                 android:scaleType="centerCrop"
+                android:clickable="true"
                 android:src="@mipmap/ic_launcher" />
 
             <TextView
@@ -81,6 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/discover_recommend_item_album_icon_height"
                 android:scaleType="centerCrop"
+                android:clickable="true"
                 android:src="@mipmap/ic_launcher" />
 
             <TextView
@@ -120,6 +124,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/discover_recommend_item_album_icon_height"
                 android:scaleType="centerCrop"
+                android:clickable="true"
                 android:src="@mipmap/ic_launcher" />
 
             <TextView

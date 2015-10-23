@@ -1,24 +1,18 @@
-package ximalayafm.beiing.com.ximalayafm.fragments.discaover;
+package ximalayafm.beiing.com.ximalayafm.fragments.discover;
 
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
-import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.lidroid.xutils.BitmapUtils;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -41,7 +35,6 @@ import ximalayafm.beiing.com.ximalayafm.tasks.DiscoverRecommendTask;
 import ximalayafm.beiing.com.ximalayafm.tasks.TaskCallBack;
 import ximalayafm.beiing.com.ximalayafm.tasks.TaskResult;
 import ximalayafm.beiing.com.ximalayafm.utils.DimensionUtil;
-import ximalayafm.beiing.com.ximalayafm.utils.HttpTools;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -180,12 +173,14 @@ public class DiscoverRecommendFragment extends BaseFragment implements TaskCallB
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        // 2 解析列表
+                        // TODO 2 解析列表
+
                     }
                 }
 
             } else {
                 // TODO 提示错误信息
+                Toast.makeText(getActivity(),"滚动图加载失败",Toast.LENGTH_LONG).show();
             }
 
         }
@@ -238,6 +233,9 @@ public class DiscoverRecommendFragment extends BaseFragment implements TaskCallB
                 long trackId = albumRecommend.getTrackId();
             }
         }
+
+
+
 
     }
 }

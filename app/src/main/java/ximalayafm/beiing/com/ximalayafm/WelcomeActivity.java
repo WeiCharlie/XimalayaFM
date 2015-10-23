@@ -9,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+
 /**
  * 欢迎页面，当第一次安装或者更新之后需要显示
  */
@@ -40,5 +42,6 @@ public class WelcomeActivity extends FragmentActivity {
 
         startActivity(intent);
         finish();
+
     }
 }

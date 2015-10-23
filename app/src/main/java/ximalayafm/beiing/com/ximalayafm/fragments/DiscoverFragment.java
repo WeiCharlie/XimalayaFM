@@ -14,11 +14,11 @@ import java.util.List;
 
 import ximalayafm.beiing.com.ximalayafm.R;
 import ximalayafm.beiing.com.ximalayafm.adapters.CommonFragmentPagerAdapter;
-import ximalayafm.beiing.com.ximalayafm.fragments.discaover.DiscoverAnchorFragment;
-import ximalayafm.beiing.com.ximalayafm.fragments.discaover.DiscoverCategoryFragment;
-import ximalayafm.beiing.com.ximalayafm.fragments.discaover.DiscoverLifeFragment;
-import ximalayafm.beiing.com.ximalayafm.fragments.discaover.DiscoverRatingFragment;
-import ximalayafm.beiing.com.ximalayafm.fragments.discaover.DiscoverRecommendFragment;
+import ximalayafm.beiing.com.ximalayafm.fragments.discover.DiscoverAnchorFragment;
+import ximalayafm.beiing.com.ximalayafm.fragments.discover.DiscoverCategoryFragment;
+import ximalayafm.beiing.com.ximalayafm.fragments.discover.DiscoverLifeFragment;
+import ximalayafm.beiing.com.ximalayafm.fragments.discover.DiscoverRatingFragment;
+import ximalayafm.beiing.com.ximalayafm.fragments.discover.DiscoverRecommendFragment;
 
 /**
  * A simple {@link Fragment} subclass.

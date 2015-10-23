@@ -1,14 +1,14 @@
-package ximalayafm.beiing.com.ximalayafm.fragments.discaover;
+package ximalayafm.beiing.com.ximalayafm.fragments.discover;
 
-import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ximalayafm.beiing.com.ximalayafm.Constants;
@@ -37,7 +37,16 @@ public class DiscoverCategoryFragment extends BaseFragment implements TaskCallBa
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_discover_category, container, false);
+        View ret = inflater.inflate(R.layout.fragment_discover_category, container, false);
+        ListView listView = (ListView) ret.findViewById(R.id.test_list);
+        ArrayList<String> data = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            data.add("" + i);
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_expandable_list_item_1,data);
+        listView.setAdapter(adapter);
+        return ret;
+
     }
 
 
