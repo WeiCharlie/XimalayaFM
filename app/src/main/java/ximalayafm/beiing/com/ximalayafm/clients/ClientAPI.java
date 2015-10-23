@@ -103,6 +103,20 @@ Log.d("URL",url);
         return ret;
     }
     // -----------------------
+
+    //   -------------------------------接口17
+    // http://mobile.ximalaya.com/mobile/others/ca/album/track/203355/true/2/20
+    // ?device=android&pageSize=20&albumId=203355&isAsc=true
+
+    public static JSONObject getAlbumDetail(String albumId){
+        JSONObject ret = null;
+        if (albumId != null) {
+            StringBuilder sb = new StringBuilder(API_POINT);
+            sb.append("/mobile/others/ca/album/track/203355/true/2/20");
+        }
+
+        return ret;
+    }
     // -----------------------
     // -----------------------
     // -----------------------

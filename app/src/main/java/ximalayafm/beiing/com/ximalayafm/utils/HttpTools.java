@@ -44,7 +44,7 @@ public final class HttpTools {
                 // 完善Http请求的内容
                 // 1 设置通用的Http头信息
                 // 设置Accept头信息，告诉服务器，客户端能够接收的数据类型
-                conn.setRequestProperty("Accept","application/*,text/*,image/*,*/*");
+//                conn.setRequestProperty("Accept","application/*,text/*,image/*,*/*");
                 // 设置接收的内容压缩编码算法
                 conn.setRequestProperty("Accept-Encoding","gzip");
 
